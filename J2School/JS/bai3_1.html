@@ -104,8 +104,8 @@ input[type=number] {
 				<br>
 				<br>
 				<input type="number" id="input" autofocus style="width: 200px;height: 25px;border-radius:5px;border:1px solid gray;margin-right: 30px;margin-top: 10px;">
-				<button type="button" onclick='nhap_mang()' id="Btn_nhap" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer;">Nhập</button>
-				<button type="button" onclick='in_ra();' id="Btn_check" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer">Check</button>
+				<button type="button" onclick='nhap_mang();in_ra();' id="Btn_nhap" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer;">Nhập</button>
+				<!-- <button type="button" onclick='in_ra();' id="Btn_check" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer">Check</button> -->
 				<button type="button" id="exit" style="text-align: center;width:15px;height: 15px;border-radius:50%;position: absolute;top: 10px;left: 10px;cursor: pointer;" onclick="f5()">X</button>
 
 				<div id="ket_qua" align="left" style="margin:50px 20px 0px 20px;line-height:25px;font-weight: bold;border-top: 1.5px solid black ;">
@@ -178,7 +178,7 @@ input[type=number] {
 		const tong = document.getElementById('sum');
 		const max = document.getElementById('max');
 		const so_nguyen_to = document.getElementById('output6');
-
+		var isEmpty = false;
 		function f5()
 		{
 			location.reload();
@@ -190,89 +190,94 @@ input[type=number] {
 			if (isNaN(input.value) || input.value == '')
 			{
 				alert('Nhập không hợp lệ! (empty)');
+				isEmpty = true;
 				return;
+			}else
+			{
+				isEmpty = false;
+				array.push(input.valueAsNumber);
+				input.value = "";
+				input.focus();
 			}
-			array.push(input.valueAsNumber);
-			input.value = "";
-			input.focus();
+
 		}
 
 		function in_ra()
-		{
-			if (array.length == 0) {
-				alert('Please add something to your array!');
-				return;
-			}
+		{	
+			if (isEmpty){return;}
+			//Dont need this code because we did nhap_mang before so length always > 1
+			// if (array.length == 0) {
+			// 	alert('Please add something to your array!');
+			// 	return;
+			// }
 
+			//if click btn_nhap then show this (would be better if i use createElement but... you know
 			document.getElementById("sum").style.display = "inline-block";
 			document.getElementById("max").style.display = "inline-block";
-			
-			for (var i = 0; i < array.length; i++)
+			var i = array.length - 1;
+			if (is_even(array[i]) == 1) //is Even
 			{
-				
-
-				if (is_even(array[i]) == 1)
-				{
-					let so_chan_con = document.createElement("div");
-					var content = document.createTextNode(array[i] +" ");
-					so_chan_con.appendChild(content);
-					let color = make_color(array[i]);
-					so_chan_con.style.backgroundColor = color;
-					so_chan_con.style.display = "inline-block";
-					so_chan_con.style.borderRadius = "7px";
-					so_chan_con.style.padding = "3px";
-					so_chan_con.style.marginRight = "7px";
-					so_chan_con.style.boxShadow = "0px 0px 5px black";
-					so_chan.insertBefore(so_chan_con,null);
+				let so_chan_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_chan_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_chan_con.style.backgroundColor = color;
+				so_chan_con.style.display = "inline-block";
+				so_chan_con.style.borderRadius = "7px";
+				so_chan_con.style.padding = "3px";
+				so_chan_con.style.marginRight = "7px";
+				so_chan_con.style.boxShadow = "0px 0px 5px black";
+				so_chan.insertBefore(so_chan_con,null);
 					// so_chan.appendChild(document.createTextNode(array[i] +" "))
 				}
-				else if(is_even(array[i]) == 0)
-				{
-					let so_le_con = document.createElement("div");
-					var content = document.createTextNode(array[i] +" ");
-					so_le_con.appendChild(content);
-					let color = make_color(array[i]);
-					so_le_con.style.backgroundColor = color;
-					so_le_con.style.display = "inline-block";
-					so_le_con.style.borderRadius = "7px";
-					so_le_con.style.padding = "3px";
-					so_le_con.style.marginRight = "7px";
-					so_le_con.style.boxShadow = "0px 0px 5px black";
-					so_le.insertBefore(so_le_con,null);
-					// so_le.appendChild(document.createTextNode(array[i] +" "))
-				}
-				else
-				{
-					let so_thap_phan_con = document.createElement("div");
-					var content = document.createTextNode(array[i] +" ");
-					so_thap_phan_con.appendChild(content);
-					let color = make_color(array[i]);
-					so_thap_phan_con.style.backgroundColor = color;
-					so_thap_phan_con.style.display = "inline-block";
-					so_thap_phan_con.style.borderRadius = "7px";
-					so_thap_phan_con.style.padding = "3px";
-					so_thap_phan_con.style.marginRight = "7px";
-					so_thap_phan_con.style.boxShadow = "0px 0px 5px black";
-					so_thap_phan.insertBefore(so_thap_phan_con,null);
-					// so_thap_phan.appendChild(document.createTextNode(array[i] +" "))
-				}
-
-				if (isPrime(array[i])) 
-				{
-					let so_nguyen_to_con = document.createElement("div");
-					var content = document.createTextNode(array[i] +" ");
-					so_nguyen_to_con.appendChild(content);
-					let color = make_color(array[i]);
-					so_nguyen_to_con.style.backgroundColor = color;
-					so_nguyen_to_con.style.display = "inline-block";
-					so_nguyen_to_con.style.borderRadius = "7px";
-					so_nguyen_to_con.style.padding = "3px";
-					so_nguyen_to_con.style.marginRight = "7px";
-					so_nguyen_to_con.style.boxShadow = "0px 0px 5px black";
-					so_nguyen_to.insertBefore(so_nguyen_to_con,null);
-					// so_nguyen_to.appendChild(document.createTextNode(array[i] +" "))
-				}
+			else if(is_even(array[i]) == 0) //is Odd
+			{
+				let so_le_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_le_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_le_con.style.backgroundColor = color;
+				so_le_con.style.display = "inline-block";
+				so_le_con.style.borderRadius = "7px";
+				so_le_con.style.padding = "3px";
+				so_le_con.style.marginRight = "7px";
+				so_le_con.style.boxShadow = "0px 0px 5px black";
+				so_le.insertBefore(so_le_con,null);
+				// so_le.appendChild(document.createTextNode(array[i] +" "))
 			}
+			else //is decimal
+			{
+				let so_thap_phan_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_thap_phan_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_thap_phan_con.style.backgroundColor = color;
+				so_thap_phan_con.style.display = "inline-block";
+				so_thap_phan_con.style.borderRadius = "7px";
+				so_thap_phan_con.style.padding = "3px";
+				so_thap_phan_con.style.marginRight = "7px";
+				so_thap_phan_con.style.boxShadow = "0px 0px 5px black";
+				so_thap_phan.insertBefore(so_thap_phan_con,null);
+				// so_thap_phan.appendChild(document.createTextNode(array[i] +" "))
+			}
+
+			if (isPrime(array[i])) 
+			{
+				let so_nguyen_to_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_nguyen_to_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_nguyen_to_con.style.backgroundColor = color;
+				so_nguyen_to_con.style.display = "inline-block";
+				so_nguyen_to_con.style.borderRadius = "7px";
+				so_nguyen_to_con.style.padding = "3px";
+				so_nguyen_to_con.style.marginRight = "7px";
+				so_nguyen_to_con.style.boxShadow = "0px 0px 5px black";
+				so_nguyen_to.insertBefore(so_nguyen_to_con,null);
+				// so_nguyen_to.appendChild(document.createTextNode(array[i] +" "))
+			}
+
+
 
 			// let tong_con = document.createElement("div");
 			// var content = document.createTextNode(findSum(array));
@@ -285,7 +290,7 @@ input[type=number] {
 			// tong_con.style.marginRight = "7px";
 			// tong_con.style.boxShadow = "0px 0px 5px black";
 			// tong.insertBefore(tong_con,null);
-		
+
 
 			tong.innerHTML = findSum(array);
 			tong.style.backgroundColor = make_color(findSum(array));
@@ -294,6 +299,8 @@ input[type=number] {
 			max.style.backgroundColor = make_color(findMax(array));
 
 		}
+
+
 		function isPrime(x) 
 		{
 			for (let i = 3; i<Math.floor(Math.sqrt(x)); i++)
