@@ -74,17 +74,13 @@ input[type=number] {
 </head>
 <body style="font-family:roboto">	
 
-	<script type="text/javascript">
-		var count = -100;
-	</script>
-
-	<form>
+	<form onsubmit='return false'>
 		<div id="grad" align="center" id="div_id" style="position: relative;">
 			<div class="container">
 				Nhập vào 1 số:
 				<br>
 				<input type="number" id="input" autofocus style="width: 130px;height: 20px;border-radius:5px;border:1px solid gray;margin-right: 30px;margin-top: 10px;">
-				<button type="button" onclick='in_ra();' id="Btn" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer;">Check</button>
+				<button type="button" onclick='in_ra();count++;counter()' id="Btn" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer;">Check</button>
 			</div>
 			<div id="ket_qua">
 				<p id="output1"></p>
@@ -98,7 +94,7 @@ input[type=number] {
 
 	<!-- JS -->
 	<script type="text/javascript">
-
+		let count = 0;	
 		var getKeyPress = document.getElementById('input');
 		getKeyPress.addEventListener("keypress",function(event){
 			if (event.key === "Enter")
@@ -155,9 +151,7 @@ input[type=number] {
 			//In các số từ 1 tới số đó (*Từ số đó tới 1 nếu là số âm)
 			for_print(a);
 
-			//In ra số lần nhập
-			// count++;
-			// document.getElementById('output4').innerHTML ='Bạn đã nhập '+ count + ' số.';
+			
 			
 		}
 
@@ -194,6 +188,12 @@ input[type=number] {
 			}
 
 			return document.getElementById('output3').innerHTML = output;
+		}
+
+		let outCount = document.getElementById('output4');
+		function counter()
+		{
+			outCount.innerHTML ='Bạn đã nhập '+ count + ' số.';
 		}
 		
 	</script>
