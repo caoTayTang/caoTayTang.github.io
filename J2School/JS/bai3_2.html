@@ -104,7 +104,7 @@
 			for (let i = 0; i < input.valueAsNumber; i++)
 			{	
 				// Max = 20 min = 0
-				let value  = Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10);
+				let value  = parseInt(Math.floor(Math.random() * 100) % 21)
 				array.push(value);
 				arrayStr += value + " ";
 
