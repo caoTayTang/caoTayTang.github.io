@@ -84,10 +84,10 @@
 		const btn = document.getElementById('Btn_nhap');
 
 		// Define global variale
-		var array = []
 
 		function in_ra()
 		{
+			var array = []
 
 			// Check if input is empty
 
@@ -125,11 +125,13 @@
 				sum += array[i];
 			}
 			return sum;
+
 		}
 
 		function findMax(array)
 		{
 			let max = array[0];
+			console.log(max);
 			for (let i = 0; i<array.length; i++)
 			{
 				if (array[i]>max)
@@ -147,6 +149,7 @@
 					min = array[i];
 			}
 			return min;
+			min = 21;
 		}
 
 		input.value = "";
