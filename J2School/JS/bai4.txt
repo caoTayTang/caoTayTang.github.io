@@ -1,9 +1,0 @@
-
-Tuổi: (số nguyên, từ 1 tới 199)
-^(?:[1-9][0-9]?|1[0-9]{2})$
-
-Điểm: (số nguyên hoặc thập phân, cách nhau bởi phẩy hoặc chấm, từ 1 tới 10, sau dấu thập phân thì có tối đa 2 số)
-^(?:10|[1-9](?:[.,][0-9]?[1-9])?)$
-
-Họ tên: (chữ đầu viết hoa, cách nhau bởi 1 dấu cách, tên có thể có nhiều từ)
-^[A-Z][a-z]+(?: [A-Z][a-z]*)+$
