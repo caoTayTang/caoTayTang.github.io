@@ -1,6 +1,8 @@
 const imgs = [
     "assets/maiyeu.jpg",
     "assets/hihi.jpg",
+    "assets/cutie.jpg",
+    "assets/anhgif.gif",
 ];
 
 function changeImg() {
