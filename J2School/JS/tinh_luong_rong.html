@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	
+</head>
+<body>
+	<form>
+		Nhập lương:<input type="text" id="textField">
+		<button type="submit" onclick="getNetSalary()">Tính lương</button>
+		<button type="reset">Thôi</button>
+	</form>
+	<script type="text/javascript">
+		function getNetSalary()
+		{
+			const luong = document.getElementById("textField").value;
+			let thue;
+			if(luong > 15000000)
+			{
+				thue = 0;
+				document.write(`Thuế là: ${thue} <br>` );
+				document.write(`\nLương là: ${luong-thue} <br>`);
+			}
+			else if( luong == 15000000)
+			{
+				thue = luong*30/100;
+				document.write(`Thuế là: ${thue} <br>`);
+				document.write(`Lương là: ${luong-thue} <br>`);
+			}
+			else if( luong >= 7000000 && luong <= 15000000)
+			{
+				thue = luong*20/100;
+				document.write(`Thuế là: ${thue} <br>`);
+				document.write(`\nLương là: ${luong-thue} <br>`);
+			}
+			else if( luong < 7000000)
+			{
+				thue = luong*10/100;
+				document.write(`Thuế là: ${thue} <br>`);
+				document.write(`\nLương là: ${luong-thue} <br>`);
+			}
+		}
+	</script>
+</body>
+</html>

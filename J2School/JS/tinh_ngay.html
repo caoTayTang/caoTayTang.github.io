@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		
+	</title>
+</head>
+<body>
+	<form>
+		<table align="center">
+			<tr>
+				<td></td>
+				<th align="center">TÍNH NGÀY TRONG THÁNG</th>
+			</tr>
+			<tr>
+				<td align="center">
+					Tháng/năm:
+				</td>
+				<td align="center">
+					<input type="number" id="thang_input" maxlength="2" value="5" style="width: 30px;padding: 0 0 0 0" >
+					/
+					<input type="number" id="nam_input" maxlength="4" value="2022" style="width: 50px;padding: 0 0 0 0">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					
+				</td>
+				<td align="center">
+					<br>
+					<button type="button" onclick="tinhSoNgay()">Tính số ngày</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					
+				</td>
+				<td align="center">
+					<br>
+					<input type="text" id="output" readonly style="width:300px;height: 20px;text-align: center;">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<script type="text/javascript">
+		function tinhSoNgay() 
+		{
+			let thang = document.getElementById('thang_input').value;
+			let nam = document.getElementById('nam_input').value;
+			let ngay; //default is 31
+				
+			switch(thang)
+			{
+				case "4":
+				case "6":
+				case "9":
+				case "11":
+					ngay = 30;
+					break;
+				case "1":
+				case "3":
+				case "5":
+				case "7":
+				case "8":
+				case "10":
+				case "12":
+					ngay = 31;
+					break;
+				case "2":
+					nam = parseInt(nam);
+					if(nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0))
+					{
+						ngay = 29;
+					}else
+					{
+						ngay = 28;
+					}
+					break;
+				default: 
+					ngay = -1;
+			}
+				
+				return document.getElementById('output').value = `Tháng ${thang} năm ${nam} có ${ngay} ngày`;
+
+			}
+		</script>
+	</body>
+	</html>

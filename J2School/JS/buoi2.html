@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+	</title>
+
+
+	<style type="text/css">
+		*{ 
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		#grad {
+			width: 100%;
+			height: 648px;
+			margin: 0px !important;
+			padding: 0px !important;
+			background: rgb(2,0,36);
+			background: linear-gradient(312deg, rgba(2,0,36,1) 0%, rgba(83,14,133,1) 0%, rgba(30,199,10,1) 100%);		}
+			td{
+				align-items: center;
+			}
+			.container{
+				width: 20%;
+				height: 70px;
+				background-color: #00ccff;
+				position: absolute;
+				top: 250px;
+				left: 500px;
+				padding-top: 20px;
+				border-radius: 10px 10px 10px 10px;
+			}
+
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+			#ket_qua
+			{
+				color: white;
+				padding-top: 150px;
+				display: none;
+				position: absolute;
+				width: 30%;
+				height: 300px;
+				top: 70px;
+				left: 450px;
+				background-color: #8a928b;
+				opacity: 0.95;
+				box-shadow: 0px 0px 15px 1px lightgray;
+				border-radius: 10px;
+				line-height: 50px;
+			}
+
+			#Btn:hover
+			{
+				background-color: #00b400;
+			}
+			#exit:hover
+			{
+				background-color: #dc143c;
+			}
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+</style>
+
+</head>
+<body style="font-family:roboto">	
+
+	<form onsubmit='return false'>
+		<div id="grad" align="center" id="div_id" style="position: relative;">
+			<div class="container">
+				Nhập vào 1 số:
+				<br>
+				<input type="number" id="input" autofocus style="width: 130px;height: 20px;border-radius:5px;border:1px solid gray;margin-right: 30px;margin-top: 10px;">
+				<button type="button" onclick='in_ra()' id="Btn" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer;">Check</button>
+			</div>
+			<div id="ket_qua">
+				<p id="output1"></p>
+				<p id="output2"></p>
+				<p id="output3"></p>
+				<p id="output4"></p>
+				<button type="button" id="exit" style="text-align: center;width:15px;height: 15px;border-radius:50%;position: absolute;top: 10px;left: 10px;cursor: pointer;">X</button>
+			</div>
+		</div>
+	</form>
+
+	<!-- JS -->
+	<script type="text/javascript">
+		let count = 0;	
+		var getKeyPress = document.getElementById('input');
+		getKeyPress.addEventListener("keypress",function(event){
+			if (event.key === "Enter")
+			{	
+					event.preventDefault(); //to prevent that 'submitting-like' action
+					document.getElementById('Btn').click();
+				}
+			})
+
+		function in_ra()
+		{
+			// Check if enter number
+			var a = document.getElementById('input').valueAsNumber;
+			if(isNaN(a))
+			{
+				alert("Bạn hãy nhập số!");
+				document.getElementById('input').focus();
+				return;
+			}
+
+			// Toggle Div
+			const targetDiv = document.getElementById("ket_qua");
+			const btn = document.getElementById("Btn");
+			btn.onclick = function () {
+					targetDiv.style.display = "block";
+			};
+
+			//Hide ket_qua Div 
+			const exitBtn = document.getElementById("exit");
+			exitBtn.onclick = function () {
+					targetDiv.style.display = "none";
+					document.getElementById("input").value= "";
+					document.getElementById("input").focus();
+			};
+
+			//In ra số chẵn, số lẻ, thập phân
+			if(a % 2 == 0)
+			{
+				document.getElementById('output1').innerHTML = a + ' là số chẵn';
+			}else if(a % 2 == 1 || a % 2 == -1)
+			{
+				document.getElementById('output1').innerHTML = a + ' là số lẻ';
+			}else
+			{
+				document.getElementById('output1').innerHTML = a + ' là số thập phân';
+			}
+			
+			//*In ra số nguyên tố
+			if (isPrime(a))
+			{
+				document.getElementById('output2').innerHTML = a + ' là số nguyên tố';
+			}
+
+			//In các số từ 1 tới số đó (*Từ số đó tới 1 nếu là số âm)
+			for_print(a);
+
+			
+			
+		}
+
+		function isPrime(x) 
+		{
+			for (let i = 2; i<x; i++)
+			{
+				if (x % i == 0)
+				{
+					return false;
+					break;
+				}			 	
+			}
+			return true;
+		}
+
+		function for_print(x)
+		{
+			let output;
+			if (x > 0)
+			{
+				output = "Từ 1 tới " + x + ":\n";
+				for (i = 1; i<=x;i++)
+				{
+					output += i + " ";
+				}
+			}
+			else{
+				output = "Từ " + x + " tới 1: \n";
+				for (i = x; i<=1;i++)
+				{
+					output += i + " ";
+				}
+			}
+
+			return document.getElementById('output3').innerHTML = output;
+		}
+
+		let outCount = document.getElementById('output4');
+		function counter()
+		{
+			outCount.innerHTML ='Bạn đã nhập '+ count + ' số.';
+		}
+		
+	</script>
+
+</body>
+</html>

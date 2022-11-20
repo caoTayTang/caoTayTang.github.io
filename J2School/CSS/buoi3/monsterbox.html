@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Monster Box - Mở Khóa Tri Thức</title>
+	<link rel="icon" href="./apple-icon-57x57.png" type="image/icon type">
+
+	<style type="text/css">
+		#div_tong
+		{
+			font-family: sans-serif;
+			font-size: 12px;
+			width: 100%;
+			height: 1500px;
+                background-color: red;
+		}
+
+		#div_tren
+		{
+			
+			width: 100%;
+			height: 6%;
+			background-color: black;
+		}
+
+		#div_tren >  .tren 
+		{
+			
+			width: 100%;
+			height: 40%;
+			background-color: #ffffff;	
+			border-bottom: 1px solid rgb(234, 234, 234);
+		}
+
+		#div_tren >  .tren > .search
+		{
+			width: 4%;
+			height: 80%;
+			background-color: #f5f5f5;
+			position: relative;
+			margin-left: 30px;
+			top: 3px;
+			border-radius: 30px;
+			float: left;
+		}
+
+		#div_tren >  .tren > .hamburger
+		{
+			width: 4.5%;
+			height: 100%;
+			float: left;
+			margin-left: 5%;
+			/*background-image: url('./hamburger.webp');
+			background-size:24px 24px ;
+			background-repeat: no-repeat;
+			background-position: center;*/
+			border-right: 1px solid rgb(234, 234, 234);
+			border-left: 1px solid rgb(234, 234, 234);
+
+		}
+
+		#div_tren >  .tren > .donate_cho_kien_thuc
+		{
+			
+			width: 15%;
+			height: 100%;
+			background-color: #f5f5f5;
+			float: left;
+			position: relative;
+			border-right: 1px solid rgb(234, 234, 234);
+		}
+
+		#div_tren >  .tren > .redirect
+		{
+			width: 10%;
+			height: 100%;
+			float: left;
+			border-right: 1px solid rgb(234, 234, 234);
+			position: relative;
+			background-color: #ffffff;
+		}
+
+		#div_tren >  .tren > .redirect > img
+		{
+			width: 24px;
+			height: 24px;
+			margin-left: 12px;
+			margin-top: 7px ;
+		}
+
+		#div_tren >  .tren > .ngon_ngu
+		{
+			width: 16%;
+			height: 100%;
+			float: left;
+			border-right: 1px solid rgb(234, 234, 234);
+			position: relative;
+			background-color: #ffffff;
+		}
+
+		#div_tren >  .tren > .ngon_ngu > .align_ngon_ngu
+		{
+			position: absolute;
+			top: 13px;
+			left: 13px;
+		}
+
+		#div_tren >  .tren > .giao_dien_toi
+		{
+			width: 11.5%;
+			height: 100%;
+			float: left;
+			border-right: 1px solid rgb(234, 234, 234);
+			position: relative;
+			background-color: #ffffff;
+		}
+
+		#div_tren >  .tren > .giao_dien_toi > .align_giao_dien_toi
+		{
+			position: absolute;
+			top: 13px;
+			left: 15px;
+			justify-content: center;
+		}#div_tren >  .tren > .giao_dien_toi > .align_slider
+		{
+			position: absolute;
+			top: 8px;
+			left: 100px;
+			justify-content: center;
+		}
+
+		#div_tren >  .tren > .dang_ki_dang_nhap
+		{
+			width: 28%;
+			height: 100%;
+			float: left;
+			border-right: 1px solid rgb(234, 234, 234);
+			position: relative;
+			background-color: #ffff;
+		}
+
+		#div_tren > .duoi
+		{
+			width: 100%;
+			height: 58%;
+			background-color: #f4f7f6;
+			border-bottom: 1px solid rgb(234, 234, 234);
+		}
+
+		#div_tren > .duoi > .logo
+		{
+			width: 11.5%;
+			height: 100%;
+			background-color: #f4f7f6;
+			border-right: 1px solid rgb(234, 234, 234);
+			float: left;
+
+		}
+
+		#div_tren > .duoi > .the_loai_cac_kieu
+		{
+			width: 70%;
+			height: 100%;
+			background-color: aqua;
+			/*border-right: 1px solid rgb(234, 234, 234);*/
+			float: left;
+			margin: 0px 0px 0px 0px;
+			padding-left: 0;
+			position: relative;
+			float: left;
+		}
+		
+		#div_tren > .duoi > ul > li
+		{
+			width:16.59%;
+			height: 100%;
+			background-color: #f4f7f6;
+			text-align: center;
+			border-right: 1px solid rgb(234, 234, 234);
+			padding-left: 30px;
+		}
+
+
+
+		#div_tren > .duoi > .tuy_chinh_theo_doi
+		{
+			width: 19.4%;
+			height: 100%;
+			background-color: black;
+			border-bottom: 1px solid rgb(234, 234, 234);
+			float: left;
+		}
+
+
+		#div_giua
+		{
+			width: 100%;
+			height: 80%;
+			background-color: #f4f7f6;
+		}
+
+		#div_duoi
+		{
+			width: 100%;
+			height: 14%;
+			background-color: #f4f7f6;
+		}
+
+		a
+		{
+			text-decoration: none;
+			color: #333333;
+		}
+
+		.donate_cho_kien_thuc > a:hover
+		{
+			color: #fe5dcb
+		}
+
+		.align_ngon_ngu > a:hover
+		{
+			color: #fe5dcb
+		}
+
+		.dang_ki_dang_nhap > a:hover
+		{
+			color: #fe5dcb			
+		}
+
+		.hamburger a ~ ul
+		{
+			display: none;
+		}
+
+		.hamburger > a:focus ~ ul
+		{
+			padding: 10px 5px 10px 5px;
+			display: block;
+			position: absolute;
+			top: 24.5px;
+			left: 145px;
+			border: 1px solid rgb(234, 234, 234);
+			padding-left: 0px;
+			text-align: left;
+			z-index: 99;
+		}
+
+		ul
+		{
+			list-style: none;
+			background-color: #ffffff;
+		}
+
+		.duoi> ul > li
+		{
+			float: left;
+		}
+
+		/*Align vertical*/
+		li {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		
+		ul li:hover
+		{
+			background-color: white !important;
+			color:#fe5dcb !important;
+		}
+
+		.tuy_chinh_theo_doi:hover
+		{
+			background-color: #ff00ae !important;
+		}
+	/*	.duoi ul li a:hover
+		{
+			background-color: white;
+			padding: 20px 30px 20px 35px;
+			color: #fe5dcb;
+		}*/
+
+		/*slider*/
+		/* The switch - the box around the slider */
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 40px;
+			height: 23px;
+		}
+
+		/* Hide default HTML checkbox */
+		.switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		/* The slider */
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #e4e7e7;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 15px;
+			width: 15px;
+			left: 4px;
+			bottom: 4px;
+			background-color: #5e5e5e;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		input:checked + .slider {
+			background-color: black;
+		}
+
+		input:focus + .slider {
+			box-shadow: 0 0 1px #eaeaea;
+		}
+
+		input:checked + .slider:before {
+			-webkit-transform: translateX(16px);
+			-ms-transform: translateX(16px);
+			transform: translateX(16px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+			border-radius: 34px;
+		}
+
+		.slider.round:before {
+			border-radius: 50%;
+		}
+
+		.hashtag
+		{
+			text-align: center;
+			border-radius: 20px;
+			border: 1px solid #eaeaea;
+			background-color: white;
+			margin: 4px 3px 10px 10px;
+			padding: 10px 15px 10px 15px;
+			z-index: 99;
+		}
+
+		.hamburger_fixed
+		{
+			position: fixed;
+			top: 580px;
+			right: 20px;
+		}
+
+		.hamburger_fixed a:hover img
+		{
+			opacity: 1 !important;
+		}
+
+		.hashtag:hover
+		{
+			background-color: #ff00ae !important;
+			color: white !important;
+		}
+	</style>
+</head>
+<body style="margin: 0px;">
+	<div id="div_tong">
+		<div class="hamburger_fixed">
+			<a href="#">
+				<img style="width: 40px;height: 40px;opacity: 0.5;" src="./hamburger_fixed.webp">
+			</a>
+		</div>
+
+		<div id="div_tren">	
+			<div class="tren">
+				<div class="search">
+					<a href="#" type="search">
+						<img src="./searchbutton.webp" style="height: 24px;width: 24px;position: absolute;left: 25%;top: 15%;">
+					</a>
+				</div>
+
+				<div class="hamburger">
+					<a href="#">
+						<img style="height: 24px;width: 24px;position: absolute;top: 7px;left: 160px;" src="./hamburger.webp">
+					</a>
+					<ul style="padding-left:10px">
+						<li>
+							<a href="#">
+								BÀI VIẾT
+							</a>
+						</li>
+						<br>
+						<li>
+							<a href="#">
+								VIDEO
+							</a>
+						</li>
+						<br>
+						<li>
+							<a href="#">
+								ARTWORK
+							</a>
+						</li>
+						<br>
+						<li>
+							<a href="#">
+								LIÊN HỆ
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="donate_cho_kien_thuc">
+					<a href="#" style="position: absolute;top: 12px;left: 20px;">DONATE CHO KIẾN THỨC</a>
+				</div>
+
+				<div class="redirect">
+					<img src="./facebook.webp">
+					<img src="./youtube.webp">
+					<img src="./behance.webp">
+				</div>
+
+				<div class="ngon_ngu">
+					<div class="align_ngon_ngu" >
+						Ngôn ngữ: 
+						<a href="#">
+							<b>Tiếng Việt</b>
+						</a>
+						|
+						<a style="color:#999999" href="#">Tiếng Anh</a>
+					</div>
+				</div>
+
+				<div class="giao_dien_toi">
+					<div class="align_giao_dien_toi">
+						Giao Diện Tối:
+					</div>
+					<div class="align_slider">
+						<label class="switch">
+							<input type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+
+				<div class="dang_ki_dang_nhap">
+					<a style="position:absolute;top: 13px;left: 200px;"href="#">ĐĂNG KÝ</a> 
+					<a style="position:absolute;top: 13px;left: 270px;"href="#">ĐĂNG NHẬP</a>  
+				</div>
+			</div>
+
+			<div class="duoi">
+
+				<div class="logo">
+					<a href="#">
+						<img style="width: 70px;height:39.2px;position: absolute;left: 30px;top: 47px;" src="./logo.webp">
+					</a>
+				</div>
+
+				<ul  class="the_loai_cac_kieu">
+					<li style="width: 9%;">
+						<a href="#">
+							THỂ LOẠI
+						</a>
+					</li>
+
+					<li style="width: 14%;">
+						<a href="#">
+							DANH SÁCH THẺ
+						</a>
+					</li>
+					
+					<li style="border-right: 0px;width: 17%;">
+						<a href="#">
+							BÀI VIẾT CỦA CÁC TUẦN
+						</a>
+					</li>
+					
+					<li style="width:18%">
+						<a href="#">
+							BÀI VIẾT CỦA CÁC THÁNG
+						</a>
+					</li>
+					
+					<li style="border-right: 0px;width: 9%;">
+						<a href="#">
+							PODCADS
+						</a>
+					</li>
+					
+					<li style="border-right: 0px;width: 12.3%;" >
+						<a href="#">
+							YOUR PLAYLIST
+						</a>
+					</li>
+					
+				</ul>
+
+				<div class="tuy_chinh_theo_doi">
+					<a style="position: absolute;top: 56px;left: 1047px;font-size: 13px;color: white;" href="#">
+						TÙY CHỈNH THEO DÕI
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+
+		<div id="div_giua">
+			<table style="margin-left: 30px;padding-top: 50px;" >
+				<tr>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb1.jpg">
+						</a>
+					</td>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb2.jpg">
+						</a>
+					</td>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb3.jpg">
+						</a>
+					</td>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb4.jpg">
+						</a>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding-top:10px;vertical-align: top">
+						<span style="font-size:17px;color: #333333;line-height: 23px;"> 
+							VỀ VẤN NẠN ĂN CẮP TRONG 
+							<br>
+							NGÀNH SÁNG TẠO
+						</span>
+						<br>
+						<button type="button" class="hashtag" style="z-index: 1000;">
+							# Tối Chủ Nhật Cùng Monster Box
+						</button>
+					</td>
+					<td style="padding-top:10px;vertical-align: top;">
+						<span style="font-size:17px;color: #333333;line-height: 23px;"> 
+							DÒNG CHẢY CỦA NƯỚC VÀ 					
+							<br>
+							SỰ TIẾN BƯỚC CỦA NỀN VĂN
+							<br>
+							MINH	
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Tiến Hóa
+						</button>
+						<button type="button" class="hashtag">
+							# Nước
+						</button>
+					</td>
+					<td style="padding-top:10px;vertical-align: top;">
+						<span style="font-size:17px;color: #333333;line-height: 23px;"> 
+							SÔNG NƯỚC VÀ CHÍNH TRỊ -
+							<br> 
+							SỰ LÊN NGÔI VÀ SUY TÀN
+							<br>
+							CỦA NHỮNG ĐẾ CHẾ TRÊN
+							<br>
+							DÒNG MEKONG							
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Địa Chính Trị
+						</button>
+						<button type="button" class="hashtag">
+							# Thủy Điện
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Tam Giác Vàng
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Chính Trị
+						</button>
+					</td>
+					<td style="padding-top:10px;vertical-align: top;">
+						<span style="font-size:17px;color: #333333;line-height: 23px;"> 
+							BÍ MẬT CỦA BÀI ĐỌC HIỂU
+							<br>
+							TRONG ĐỀ THI VĂN THPT QG
+							<br>
+							2021					
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Địa Chính Trị
+						</button>
+						<button type="button" class="hashtag">
+							# Thủy Điện
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Tam Giác Vàng
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Chính Trị
+						</button>
+					</td>
+				</tr>
+
+				<!-- ======================================= -->
+				<tr>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb5.jpg">
+						</a>
+					</td>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb6.jpg">
+						</a>
+					</td>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb7.jpg">
+						</a>
+					</td>
+					<td align="left" style="color: #333333;padding-right:50px;">
+						<a href="#" style="z-index: 1">
+							<img width="251.83" height="252" style="border-radius: 10px;" src="./thumb8.jpg">
+						</a>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding-top:10px;vertical-align: top;">
+						<span style="font-size:17px"> 
+							NHỮNG NGƯỜI BẠN CỦA  
+							<br>
+							MONSTER BOX
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Tối Chủ Nhật Cùng Monster Box
+						</button>
+					</td>
+					<td style="padding-top:10px;vertical-align: top;">
+						<span style="font-size:17px;color: #333333;line-height: 23px;"> 
+							VINH QUANG CỦA CHÂU ÂU 
+							<br>
+							TRONG KỶ NGUYÊN KHÁM 
+							<br>
+							PHÁ, VÀ TÀN TRO SAU MỖI
+							<br>
+							BƯỚC CHÂN
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Kỷ Nguyên Khám Phá
+						</button>
+						<button type="button" class="hashtag">
+							# Christopher Columbus
+						</button>
+						<button type="button" class="hashtag">
+							# Thám Hiểm Hàng Hải
+						</button>
+						<button type="button" class="hashtag">
+							# Chủ Nghĩa Thực Dân
+						</button>
+					</td>
+					<td style="padding-top:10px;vertical-align: top;color: #333333;line-height: 23px;">
+						<span style="font-size:17px;"> 
+							CHÚNG TA CÓ TIẾN HÓA TỪ
+							<br>
+							NƯỚC HAY KHÔNG, VÀ NẾU
+							<br> 
+							CÓ THÌ NHƯ THẾ NÀO?						
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Cổ Sinh Vật Học
+						</button>
+						<button type="button" class="hashtag">
+							# Động Vật Bốn Chi
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Tiến Hóa
+						</button>
+						
+					</td>
+					<td style="padding-top:10px;vertical-align: top;">
+						<span style="font-size:17px;color: #333333;line-height: 23px;"> 
+							TẠI SAO CHÚNG TA LẠI TÌM 
+							<br>
+							NƯỚC KHI TÌM KIẾM SỰ SỐNG 
+							<br>
+							NGOÀI TRÁI ĐẤT?				
+						</span>
+						<br>
+						<button type="button" class="hashtag">
+							# Màng Lọc Vĩ Đại
+						</button>
+						<button type="button" class="hashtag">
+							# Nghịch Lý Fermi
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Sự Sống Ngoài Trái Đất
+						</button>
+						<br>
+						<button type="button" class="hashtag">
+							# Nước
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="div_duoi">
+			<div style="padding: 20px 0px 40px 30px; font-size: 14px;color: #333333;line-height: 23px;font-style: italic;">
+				"Mọi tri thức từ cổ chí kim đều hấp dẫn, chỉ là chúng chưa được kể đúng cách"- <b>Monster Box</b>
+				<br>
+				Đơn vị quản lý vận hành: Công ty Cổ Phần Monster Box
+				<br>
+				Mã số thuế: 0314912825
+				<br>
+				Địa chỉ ĐKKD: Tầng lửng, tòa nhà 407 Tô Hiến Thành, phường 14, quận 10, thành phố Hồ Chí Minh
+				<br>
+				Điện thoại: 0973003214
+				<br>
+				Email: lam@monsterbox.media
+				<br>
+				Giấy phép thiết lập MXH số 70/GP-BTTTT, Ký ngày 25/01/2022
+				<div style="font-style: normal;padding-top: 6px;">
+					<b>Theo dõi</b>:&nbsp; Facebook &nbsp; Youtube &nbsp; Behance
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!-- Validate form có: tên, giới tính, địa chỉ, email, mật khẩu, sở thích -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Validate Form</title>
+	<style type="text/css">
+		@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
+html {
+	height: 150%;
+	/*Image only BG fallback*/
+	
+	/*background = gradient + image pattern combo*/
+	background: 
+	linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+	width: 500px;
+	margin: 20px auto;
+	text-align: center;
+	position: relative;
+}
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+/*#msform fieldset:not(:first-of-type) {
+	display: none;
+}*/
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+}
+
+#so_thich
+{
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2c3e50;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.error_span
+{
+	width: 100%;
+	font-family: montserrat;
+	color: red;
+	font-size: 13px;
+	font-weight: bold;
+}
+.radio_gioi_tinh
+{
+	width: 10% !important;
+}
+
+</style>
+</head>
+<body>
+	<!-- multistep form -->
+	<form id="msform">
+
+		<fieldset>
+			<h2 class="fs-title">Validating Form</h2>
+			<input type="text" id="ten" placeholder="Tên" />
+			<br>
+			<span class="error_span"></span>
+
+			<input type="text" id="gioi_tinh" placeholder="Giới tính" disabled/>
+				<input type="radio" name="gioitinh" class="radio_gioi_tinh">Nam
+				<input type="radio" name="gioitinh" class="radio_gioi_tinh">Nữ			
+			<br>
+			<span class="error_span"></span>
+
+			<input type="text" id="dia_chi" placeholder="Địa chỉ" />
+			<br>
+			<span class="error_span"></span>
+
+			<input type="email" id="email" placeholder="Email" />
+			<br>
+			<span class="error_span"></span>
+
+			<input type="password" id="password" placeholder="Mật khẩu" />
+			<br>
+			<span class="error_span"></span>
+			<input type="password" id="re_password" placeholder="Nhập lại mật khẩu" />
+			<br>
+			<span class="error_span"></span>
+
+			<br>
+			<select id="so_thich">
+				<option value="" disabled selected>Sở thích</option>
+				<option>Chơi bóng rổ</option>
+				<option>Chơi bóng chuyền</option>
+				<option>Bơi lội</option>
+				<option>Ca hát</option>
+			</select>
+			<span class="error_span"></span>
+
+			<br>
+			<input type="reset" class="reset action-button" value="Reset" />
+			<input type="submit" class="submit action-button" value="Submit" onclick="return validate();" />
+		</fieldset>
+
+	</form>
+	<script type="text/javascript">
+		// Input
+		const ten = document.getElementById('ten');
+		const gioi_tinh = document.getElementById('gioi_tinh');
+		const dia_chi = document.getElementById('dia_chi');
+		const email = document.getElementById('email');
+		const password = document.getElementById('password');
+		const re_password = document.getElementById('re_password');
+		const so_thich = document.getElementById('so_thich');
+		// Error span
+		const error_span = document.getElementsByClassName('error_span');
+		// Button
+		const btn_reset = document.getElementsByClassName('reset action-button');
+		const btn_submit = document.getElementsByClassName('submit action-button');
+		// radio box
+		const radio_nam = document.getElementsByClassName('radio_gioi_tinh')[0];
+		const radio_nu = document.getElementsByClassName('radio_gioi_tinh')[1];
+
+
+		//validating form
+        function validate()
+		{
+			let isValid = true;
+
+			if( !check_name() )
+			{	
+				error_span[0].innerHTML = "Tên không hợp lệ";
+				isValid = false;
+			} 
+
+			if( !check_gioi_tinh() )
+			{
+				error_span[1].innerHTML = "Chưa check giới tính";
+				isValid = false;
+			} 
+
+			if( !check_email() )
+			{
+				error_span[3].innerHTML = "Email không hợp lệ";
+				isValid = false;
+
+			}
+
+			if( !check_password() )
+			{
+				error_span[4].innerHTML = "Password phải có ít nhất <br> 8 kí tự, có chữ in hoa, có kí tự đặt biệt";
+				isValid = false;
+			}
+
+			if ( !check_re_password() && check_password() )
+			{
+				error_span[5].innerHTML = "Mật khẩu không trùng nhau!";
+				isValid = false;
+			}
+
+			if ( !check_so_thich() )
+			{
+				error_span[6].innerHTML = "Hãy chọn sở thích";
+				isValid = false;
+			}
+
+			return isValid;
+		
+		}
+
+		//check name if its > 0 character and some regex
+		function check_name()
+		{
+			//Họ tên: (chữ đầu viết hoa, cách nhau bởi 1 dấu cách, tên có thể có nhiều từ nhưng ít nhất phải là 2: Lê A for instace.)
+			const regexName = /^[A-VXYỲỌÁẦẢẤỜỄÀẠẰỆẾÝỘẬỐŨỨĨÕÚỮỊỖÌỀỂẨỚẶÒÙỒỢÃỤỦÍỸẮẪỰỈỎỪỶỞÓÉỬỴẲẸÈẼỔẴẺỠƠÔƯĂÊÂĐ][a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]+(\s{1}[A-VXYỲỌÁẦẢẤỜỄÀẠẰỆẾÝỘẬỐŨỨĨÕÚỮỊỖÌỀỂẨỚẶÒÙỒỢÃỤỦÍỸẮẪỰỈỎỪỶỞÓÉỬỴẲẸÈẼỔẴẺỠƠÔƯĂÊÂĐ][a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]*)+$/; 
+
+			return regexName.test(ten.value);
+		}	
+
+		function check_gioi_tinh()
+		{
+			if (radio_nam.checked == true || radio_nu.checked == true) 
+			{
+				return true;
+			}else return false;
+		}
+
+		function check_email()
+		{
+			const regexEmail = /^\w+([\.-]?\w+)*\@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+			return regexEmail.test(email.value)
+		}
+
+		//At least 8 chars, 1 special num, 1 capital, 1 normal and no number required
+		function check_password()
+		{
+			const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+			return regexPassword.test(password.value);
+		}
+
+		function check_re_password()
+		{
+			if ( password.value === re_password.value)
+			{
+				return true;
+			}else return false;
+
+		}
+
+		function check_so_thich()
+		{
+			if (so_thich.value != "")
+			{
+				return true;
+			}else return false;
+		}
+
+		function reset_btn()
+		{
+			for (let i = 0; i < error_span.length ; i++ )
+			{
+				error_span[i].innerHTML = ''
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+	</title>
+
+
+	<style type="text/css">
+		*{ 
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		#grad {
+			width: 100%;
+			height: 648px;
+			margin: 0px !important;
+			padding: 0px !important;
+			background: rgb(2,0,36);
+			background: linear-gradient(312deg, rgba(2,0,36,1) 0%, rgba(83,14,133,1) 0%, rgba(30,199,10,1) 100%);		}
+			td{
+				align-items: center;
+			}
+			.container{
+				width: 70%;
+				height: 600px;
+				background-color: rgba(200, 200, 250, .25);;
+				position: absolute;
+				top: 10px;
+				left: 200px;
+				padding-top: 20px;
+				border-radius: 10px 10px 10px 10px;
+				box-shadow: 0px 2px 10px 5px #b4b7b8;
+			}
+
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+			/*#ket_qua
+			{
+				color: white;
+				padding-top: 150px;
+				display: none;
+				position: absolute;
+				width: 30%;
+				height: 300px;
+				top: 70px;
+				left: 450px;
+				background-color: #8a928b;
+				opacity: 0.95;
+				box-shadow: 0px 0px 15px 1px lightgray;
+				border-radius: 10px;
+				line-height: 50px;
+			}*/
+			#Btn_nhap:hover
+			{
+				background-color: #22ba12 !important; 
+			}
+
+			#exit:hover
+			{
+				background-color: #dc143c;
+			}
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+
+#sum , #max
+{
+	display: none;
+	height: auto;
+	padding: 3px;
+	border-radius: 7px;
+	background-color: #d7d7d7;
+	color: black;
+}
+
+
+
+</style>
+
+</head>
+<body style="font-family:roboto;color: #e1e3e5 ;text-shadow: 1px 1px 1px black;">	
+
+	<form onsubmit='return false'>
+		<div id="grad" align="center" id="div_id" style="position: relative;">
+			<div class="container">
+				<span style="font-size:25px;">
+					NHẬP VÀO MẢNG:	
+				</span>
+				<br>
+				<br>
+				<input type="number" id="input" autofocus style="width: 200px;height: 25px;border-radius:5px;border:1px solid gray;margin-right: 30px;margin-top: 10px;">
+				<button type="button" onclick='nhap_mang();in_ra();' id="Btn_nhap" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer;">Nhập</button>
+				<!-- <button type="button" onclick='in_ra();' id="Btn_check" style="border: 0px; box-shadow: 0px 0px 5px 1px #888888;border-radius:7px;padding:4px;z-index: 99;cursor: pointer">Check</button> -->
+				<button type="button" id="exit" style="text-align: center;width:15px;height: 15px;border-radius:50%;position: absolute;top: 10px;left: 10px;cursor: pointer;" onclick="f5()">X</button>
+				<div id="ket_qua" align="left" style="margin:50px 20px 0px 20px;line-height:25px;font-weight: bold;border-top: 1.5px solid black ;">
+					<div id="output1">
+						Số chẵn:
+						<br>
+					</div>
+
+					<div id="output2">
+						Số lẻ:
+						<br>
+					</div>
+
+					<div id="output3">
+						Số thập phân:	
+						<br>
+					</div>
+
+					<div id="output4">
+						Tổng:
+						<br>
+						<div id="sum" style="color: #e1e3e5 ">
+							0
+						</div> 
+						
+					</div>
+
+					<div id="output5">
+						Số lớn nhất:
+						<br>
+						<div id="max" style="color: #e1e3e5 ">
+							0
+						</div>
+					</div>
+
+					<div id="output6">
+						Số nguyên tố:
+						<br>
+					</div>
+
+				</div>
+			</div>
+			
+
+			
+		</div>
+	</form>
+
+	<!-- JS -->
+	<script type="text/javascript">
+
+		var getKeyPress = document.getElementById('input');
+		getKeyPress.addEventListener("keydown",function(event)
+		{
+			if (event.key === "Enter")
+			{	
+				event.preventDefault(); //to prevent that 'submitting-like' action
+				document.getElementById('Btn_nhap').click();
+			}
+			if (event.key == "Escape")
+			{
+				location.reload();
+			}
+		})
+		var array = [];			
+		const input = document.getElementById('input');
+		const so_chan = document.getElementById('output1');
+		const so_le = document.getElementById('output2');
+		const so_thap_phan = document.getElementById('output3');
+		const tong = document.getElementById('sum');
+		const max = document.getElementById('max');
+		const so_nguyen_to = document.getElementById('output6');
+		var isEmpty = false;
+		function f5()
+		{
+			location.reload();
+		}
+
+		function nhap_mang()
+		{
+
+			if (isNaN(input.value) || input.value == '')
+			{
+				alert('Nhập không hợp lệ! (empty)');
+				isEmpty = true;
+				input.focus();
+				return;
+			}else
+			{
+				isEmpty = false;
+				array.push(input.valueAsNumber);
+				input.value = "";
+				input.focus();
+			}
+
+		}
+
+		function in_ra()
+		{	
+			if (isEmpty){return;}
+			//Dont need this code because we did nhap_mang before so length always > 1
+			// if (array.length == 0) {
+			// 	alert('Please add something to your array!');
+			// 	return;
+			// }
+
+			//if click btn_nhap then show this (would be better if i use createElement but... you know
+			document.getElementById("sum").style.display = "inline-block";
+			document.getElementById("max").style.display = "inline-block";
+			var i = array.length - 1;
+			if (is_even(array[i]) == 1) //is Even
+			{
+				let so_chan_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_chan_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_chan_con.style.backgroundColor = color;
+				so_chan_con.style.display = "inline-block";
+				so_chan_con.style.borderRadius = "7px";
+				so_chan_con.style.padding = "3px";
+				so_chan_con.style.marginRight = "7px";
+				so_chan_con.style.boxShadow = "0px 0px 2px black";
+				so_chan.insertBefore(so_chan_con,null);
+					// so_chan.appendChild(document.createTextNode(array[i] +" "))
+				}
+			else if(is_even(array[i]) == 0) //is Odd
+			{
+				let so_le_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_le_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_le_con.style.backgroundColor = color;
+				so_le_con.style.display = "inline-block";
+				so_le_con.style.borderRadius = "7px";
+				so_le_con.style.padding = "3px";
+				so_le_con.style.marginRight = "7px";
+				so_le_con.style.boxShadow = "0px 0px 5px black";
+				so_le.insertBefore(so_le_con,null);
+				// so_le.appendChild(document.createTextNode(array[i] +" "))
+			}
+			else //is decimal
+			{
+				let so_thap_phan_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_thap_phan_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_thap_phan_con.style.backgroundColor = color;
+				so_thap_phan_con.style.display = "inline-block";
+				so_thap_phan_con.style.borderRadius = "7px";
+				so_thap_phan_con.style.padding = "3px";
+				so_thap_phan_con.style.marginRight = "7px";
+				so_thap_phan_con.style.boxShadow = "0px 0px 5px black";
+				so_thap_phan.insertBefore(so_thap_phan_con,null);
+				// so_thap_phan.appendChild(document.createTextNode(array[i] +" "))
+			}
+
+			if (isPrime(array[i])) 
+			{
+				let so_nguyen_to_con = document.createElement("div");
+				var content = document.createTextNode(array[i] +" ");
+				so_nguyen_to_con.appendChild(content);
+				let color = make_color(array[i]);
+				so_nguyen_to_con.style.backgroundColor = color;
+				so_nguyen_to_con.style.display = "inline-block";
+				so_nguyen_to_con.style.borderRadius = "7px";
+				so_nguyen_to_con.style.padding = "3px";
+				so_nguyen_to_con.style.marginRight = "7px";
+				so_nguyen_to_con.style.boxShadow = "0px 0px 5px black";
+				so_nguyen_to.insertBefore(so_nguyen_to_con,null);
+				// so_nguyen_to.appendChild(document.createTextNode(array[i] +" "))
+			}
+
+
+
+			// let tong_con = document.createElement("div");
+			// var content = document.createTextNode(findSum(array));
+			// tong_con.appendChild(content);
+			// let color = make_color(array[i]);
+			// tong_con.style.backgroundColor = color;
+			// tong_con.style.display = "inline-block";
+			// tong_con.style.borderRadius = "7px";
+			// tong_con.style.padding = "3px";
+			// tong_con.style.marginRight = "7px";
+			// tong_con.style.boxShadow = "0px 0px 5px black";
+			// tong.insertBefore(tong_con,null);
+
+
+			tong.innerHTML = findSum(array);
+			tong.style.backgroundColor = make_color(findSum(array));
+
+			max.innerHTML = findMax(array);
+			max.style.backgroundColor = make_color(findMax(array));
+
+		}
+
+
+		function isPrime(x) 
+		{
+			if (x < 2) return false;
+
+			for ( let i = 2; i <= Math.floor( Math.sqrt(x) ) ; i++ )
+			{
+				if (x % i == 0)
+				{
+					return false;
+				}			 	
+			}
+			return true;
+		}
+
+		function is_even(x)
+		{
+			if (x % 2 === 0)
+			{
+				return 1;
+			}else if (x % 2 == 1){
+				return 0;
+			}else return -1;
+		}
+
+		function findSum(array)
+		{
+			var sum = 0;
+			for (var i = 0; i<array.length ; i++)
+			{
+				sum += array[i];
+			}
+			return sum;
+		}
+
+		function findMax(array)
+		{
+			let flag = array[0];
+			for (let i = 0; i<array.length; i++)
+			{
+				if (array[i]>flag)
+					flag = array[i];
+			}
+			return flag;
+		}
+
+		function make_color(input)
+		{
+			//get the digit of input
+			var result = input;
+			var digit = 0;
+			while (result != 0)
+			{
+				result = parseInt(result/10);
+				digit++;
+			}
+			var color;
+			switch (digit)
+			{
+				case 0:
+				color = "#000000";
+				break;
+
+				case 1:
+				color = "#00000"+input;
+				break;
+
+				case 2:
+				color = "#0000"+input;
+				break;
+
+				case 3:
+				color = "#000"+input;
+				break;
+
+				case 4:
+				color = "#00"+input;
+				break;
+
+				case 5:
+				color = "#0"+input;
+				break;
+
+				case 6:
+				color = "#"+input;
+				break;
+				default:
+				color = "#FFFFFF"
+
+			}
+			return color;
+		}
+
+	</script>
+
+</body>
+</html>

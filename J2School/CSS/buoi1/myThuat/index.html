@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Thuật</title>
+	<style type="text/css">
+		#div_tong
+		{
+			width: 100%;
+			height: 630px;
+			background-color: white;
+		}
+
+		#div_san_ho
+		{
+			width: 18%;
+			height: 630px;
+			background-color: black;
+			float: left;
+			position: relative;
+			left: 0px;
+			z-index: 1;
+		}
+		#div_ria
+		{
+			width: 4.2%;
+			height: 630px;
+			background-color: blueviolet;
+			float: left;
+			left: 227px;
+			background-image: url('./IMAGES/soc.jpg');
+		}
+
+		#div_phai
+		{
+			width: 77.8%;
+			height: 630px;
+			background-image:url('./IMAGES/sua1.gif');
+			background-position: 10px 100px;
+			background-repeat: no-repeat;
+			float: left;
+		}
+
+		#div_phai > .giua
+		{
+			width: 70%;
+			height: 630px;
+			position: relative;
+			float: left;
+		}
+
+		#div_phai > .giua >.div_table
+		{
+			width: 70%;
+			height: 480px;
+			position: absolute;
+			left: 70px;
+			top: 150px;
+			background-color: rgb(165, 248, 168);
+		}
+
+		#div_phai > .listIMG
+		{
+			width:15%;
+			height:630px ;
+			float: left;
+			position: absolute;
+			left: 950px;
+			top: 20px;
+		}
+
+		h1
+		{
+			margin: 0px;
+			color: rgb(244, 143, 95);
+			font-size: 60px;
+		}
+
+		label {
+			background-color: rgb(243, 244, 239);
+			color: black;
+			border: 1.5px solid rgb(1, 63, 109);
+			padding-right: 15px;
+			padding-left: 10px;
+			font-family: sans-serif;
+			border-radius: 0.3rem;
+			cursor: pointer;
+			margin-top: 1rem;
+		}
+
+	</style>
+</head>
+<body style="font-family:roboto";>
+	<div id="div_tong">
+		<div id="div_san_ho">
+			<img src="./IMAGES/sanho.gif" style="position:absolute;">
+		</div>
+		<div id="div_ria"></div>
+		<div id="div_phai">
+			<div class="giua">
+				<h1 style="padding-top:15px;margin-left: 20px;">THAM GIA CLB</h1>
+				<div style="margin-left: 70px">
+					Quý độc giả hãy điền đầy đủ thông tin để tham gia phát triển Câu lạc bộ
+					<br>
+					ngày càng vững mạnh hơn.
+				</div>
+
+				<div class="div_table">
+					<form>
+						<table style="margin-left:50px;margin-top: 5px;font-size: 15px;">
+							<tr>
+								<td style="text-align: right;"> 
+									Họ và tên:
+								</td>
+								<td>
+									<input type="text" size="30">*
+								</td>
+							</tr>
+
+							<tr>
+								<td style="text-align: right;">
+									Địa chỉ:
+								</td>
+								<td>
+									<input type="text" size="45">
+								</td>
+							</tr>
+
+							<tr>
+								<td style="text-align: right;">
+									Email:
+								</td>
+								<td>
+									<input type="email" size="30">*
+								</td>
+							</tr>
+
+							<tr>
+								<td style="text-align: right;">
+									Điện thoại:
+								</td>
+								<td>
+									<input type="number" style="width:228px">*
+								</td>
+							</tr>
+
+							<tr>
+								<td style="text-align: right;">
+									Ngày sinh:
+								</td>
+								<td>
+									<input type="number" style="width: 35px">/
+									<input type="number" style="width: 35px">/
+									<input type="number" style="width: 35px">*
+								</td>
+							</tr>
+
+							<tr>
+								<td style="text-align: right;">
+									Đề tài:
+								</td>
+								<td>
+									<select>
+										<option>
+											Tìm hiểu Sứa biển
+										</option>
+									</select>
+								</td>
+							</tr>
+
+							<tr style="position: relative;">
+								<td style="position: absolute;text-align: right;">
+									Nhóm:
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td>
+												<input type="radio" name="deTai">Nghiên cứu
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="radio" name="deTai">Hải ngư
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="radio" name="deTai">Viển dương	
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="radio" name="deTai">Mỹ thuật
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="radio" name="deTai">Thực phẩm
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="radio" name="deTai">Sinh viên
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td style="text-align: right;">
+									Gởi hình:
+								</td>
+								<td>
+									<input type="text" size="30">
+									<input type="file" id="actual-btn" hidden/>
+									<label for="actual-btn">Browse...</label>
+								</td>
+							</tr>
+
+							<tr style="position: relative;">
+								<td style="position: absolute;text-align: right;">
+									Tài liệu:
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td>
+												<input type="checkbox" name="deTai">Sinh vật Biển
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="deTai">Các loài Sứa biển
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="deTai">San hô
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="deTai">Môi trường biển
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="checkbox" name="deTai">Khí hậu
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									
+								</td>
+								<td>
+									<button type="submit" style="border: 1.5px solid rgb(15, 75, 117)">
+										Tham gia
+									</button>
+									<button type="reset">
+										Xóa thông tin
+									</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+			<div class="listIMG">
+				<img src="./IMAGES/nhom1a.jpg">
+				<img src="./IMAGES/nhom1b.jpg">
+				<img src="./IMAGES/nhom1c.jpg">
+				<img src="./IMAGES/nhom1d.jpg">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
